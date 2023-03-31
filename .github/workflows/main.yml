@@ -1,0 +1,96 @@
+# name: linting, testing, building
+# run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+# on:
+#  push:
+#    branches: [ master ]
+#  pull_request:
+#    branches: [ master ]
+# jobs:
+#  building:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        node-version: [ 17.x ]
+#    steps:
+#      - name: Get repository code
+#        uses: actions/checkout@v3
+#      - name: Cache modules
+#        uses: actions/cache@v3
+#        with:
+#          path: ~/.npm
+#          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+#      - name: Staring Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#      - name: install modules
+#        run: npm install
+#      - name: build production project
+#        run: npm run build:prod
+#        if: always()
+#  eslint:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        node-version: [ 17.x ]
+#    steps:
+#      - name: Get repository code
+#        uses: actions/checkout@v3
+#      - name: Cache modules
+#        uses: actions/cache@v3
+#        with:
+#          path: ~/.npm
+#          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+#      - name: Staring Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#      - name: install modules
+#        run: npm install
+#      - name: linting typescript
+#        run: npm run lint
+#        if: always() 
+#  jest:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        node-version: [ 17.x ]
+#    steps:
+#      - name: Get repository code
+#        uses: actions/checkout@v3
+#      - name: Cache modules
+#        uses: actions/cache@v3
+#        with:
+#          path: ~/.npm
+#          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+#      - name: Staring Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#      - name: install modules
+#        run: npm install
+#      - name: unit testing
+#        run: npm run test
+#        if: always()
+#  storybook:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        node-version: [ 17.x ]
+#    steps:
+#      - name: Get repository code
+#        uses: actions/checkout@v3
+#      - name: Cache modules
+#        uses: actions/cache@v3
+#        with:
+#          path: ~/.npm
+#          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+#      - name: Staring Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#      - name: install modules
+#        run: npm install
+#      - name: build storybook
+#        run: npm run storybook:build
+#        if: always()
